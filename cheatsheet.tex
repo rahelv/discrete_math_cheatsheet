@@ -1,0 +1,42 @@
+\documentclass[landscape,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{tikz}
+\usetikzlibrary{shapes,positioning,arrows,fit,calc,graphs,graphs.standard}
+\usepackage[nosf]{kpfonts}
+\usepackage[t1]{sourcesanspro}
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usepackage[top=0mm,bottom=1mm,left=0mm,right=1mm]{geometry}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{microtype}
+\usepackage{mathpartir}
+
+\usepackage{enumitem}% http://ctan.org/pkg/enumitem
+\usepackage{amssymb} %% Definitions for math symbols.
+\usepackage{amsmath} %% Definitions for math symbols.
+\input{inhalt/def}
+\begin{document}
+\begin{multicols*}{5}
+\fontsize{6pt}{5pt}\selectfont
+\input{inhalt/01_proofs}
+\input{inhalt/02_sets}
+\fontsize{7pt}{5pt}\selectfont
+\input{inhalt/03_cardinality}
+\input{inhalt/04_tuples_cartesian_product}
+\input{inhalt/05_relations}
+\input{inhalt/06_functions}
+%\vfill\null
+%\columnbreak
+\input{inhalt/07_divisibility_modular_arithmetic}
+\input{inhalt/08a_graphs} 
+\input{inhalt/09_acyclicity}
+\input{inhalt/10_further_topics_graphs}
+\input{inhalt/11_propositional_logic}
+\input{inhalt/12_normalforms_logical_consequences}
+\input{inhalt/13_inference}
+\fontsize{6pt}{5pt}\selectfont
+\input{inhalt/14_predicate_logic}
+\input{inhalt/15_advanced_predicate_logic}
+\end{multicols*}
+\end{document}

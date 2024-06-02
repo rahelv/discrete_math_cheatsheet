@@ -1,0 +1,66 @@
+\subsection*{Simplified Notations}
+\textbf{Implicit Placement of Parentheses} \\
+$\neg$ stronger $\wedge$ stronger $\vee
+    $ stronger $\rightarrow$ or $\leftrightarrow$ \\
+$A \vee \neg C \wedge B \rightarrow A \vee \neg D$ =  $(A \vee (\neg C \wedge B)) \rightarrow (A \vee \neg D)$
+\textbf{Short Notations for Conjunctions and Disjunctions} \\
+$\bigwedge_{i=1}^{n} \varphi_i = (\varphi_1 \wedge \varphi_2 \wedge ... \wedge \varphi_n)$ \\
+$\bigwedge_{\varphi \in X} \varphi = (\varphi_1 \wedge \varphi_2 \wedge ... \wedge \varphi_n)$ for $X = \{\varphi_1, \varphi_2, ..., \varphi_n\}$ \\
+analogous for $\vee$ \\
+\textbf{Corner Cases}: Empty Set, Only one Element in Set \\
+$\bigwedge_{\varphi \in \emptyset} \varphi$ is a tautology \\
+$\bigvee_{\varphi \in \emptyset} \varphi$ is unsatisfiable. \\
+$\bigwedge_{\varphi \in \{\chi\}} \varphi = \bigvee_{\varphi \in \{\chi\}} \varphi = \chi$ \\
+\subsection*{Normal Forms} 
+\fontsize{6pt}{5pt}\selectfont
+\textcolor{violet}{union $\cup$, OR, disjunction $\vee$, clause} \\
+\textcolor{violet}{intersection $\cap$, AND, conjunction $\wedge$, monomial} \\
+\fontsize{7pt}{5pt}\selectfont
+A representation of a formula with syntactic restrictions. \\
+\textbf{literal}: atomic proposition or negation $A,\neg A$ \\
+\textbf{clause}: disjunction of literals. ($Q \vee \neg P \vee \neg S \vee R)$ \\
+\textbf{monomial}: conjunction of literals. ($Q \wedge \neg P \wedge \neg S \wedge R)$ \\
+clause and monomial also used for corner case with only one literal $A,\neg A$ \\ 
+\textbf{Conjunctive Normal Form}: clause $\wedge$ clause \\ 
+conjunction of clauses. form: $\bigwedge_{i=1}^{n}\bigvee_{j=1}^{m_i}L_{ij}$ \\ 
+with $n,m_i>0 \text{(for 1 } \leq i \leq n)$ where the $L_{ij}$ are literals. \\ 
+ex: $((\neg P \vee Q) \wedge R \wedge (P \vee \neg S)$\\
+\textbf{Disjunctive Normal Form}: monomial $\vee$ monomial\\
+disjunction of monomials. form: $\bigvee_{i=1}^{n}\bigwedge_{j=1}^{m_i}L_{ij}$ \\
+with $n, m_i > 0 \text{ (for } 1 \leq i \leq n)$ where the $L_{ij}$ are literals.\\
+ex: $((\neg P \wedge Q) \vee R \vee (P \wedge \neg S)$\\
+a single literal is in both DNF and CNF. \\
+\textbf{Construction of Normal Form}: 
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item Replace abbreviations $\rightarrow$ and $\leftrightarrow$ by definitions \\
+    $\rightarrow$ formula structure only $\vee, \wedge, \neg$ 
+    \item Move negations inside: \textbf{De morgan}, \textbf{Double Neg.} \\ 
+    $\rightarrow$ formula structure only $\vee, \wedge$, literals 
+    \item Distribute $\vee$ over $\wedge$ with \textbf{distributivity} \\ 
+    $\rightarrow$ formula structure: CNF (vice-versa for DNF)
+\end{itemize}
+\fontsize{6pt}{5pt}\selectfont
+\textbf{Existence of Equivalent Formula in NF}: For every formula $\varphi$ there is at least 1 logically equivalent formula in CNF \& DNF. \\
+\fontsize{7pt}{5pt}\selectfont
+\textbf{Tautology}: A formula in CNF is a tautology iff every clause is a tautology. \\
+\textbf{Satisfiable}: A formula in DNF is satisfiable iff at least one monomial is satisfiable. \\
+\fontsize{6pt}{5pt}\selectfont
+\subsection*{Knowledge Bases}
+A \textbf{Knowledge Base} over A is a set of propositional formulas over A. A truth assignment $I$ for A is a model for KB ($I\vDash KB$) if $I$ is a model for every formula $\varphi \in $KB. 
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item \textbf{satisfiable}: is KB has at least one model (true for all elements in the KB) \textbf{unsatisfiable}: not satisfiable
+    \item \textbf{valid}: every interpretation is a model for KB
+    \item \textbf{falsifiable}: find model which is false for at least one element in KB
+\end{itemize}
+\subsection*{Logical Consequences}
+Let KB be a set of formulas and $\varphi$ a formula. We say that KB logically implies $\varphi$. Written $KB \vDash \varphi$ if all models of KB are also models of $\varphi$. \\
+$\vDash$ has multiple meanings: \\
+$KB \vDash \varphi$: \\
+$I \vDash \varphi$: \\
+\fontsize{7pt}{5pt}\selectfont
+\textbf{Theorems:} 
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*,label={}]
+    \item \textbf{Deduction}:  $KB \cup \{\varphi\} \vDash \psi$ iff $KB \vDash (\varphi \rightarrow \psi)$ 
+    \item \textbf{Contraposition}: $KB \cup \{\varphi\} \vDash \neg \psi$ iff $KB \cup \{\psi\} \vDash \neg \varphi$
+    \item \textbf{Contradiction}: $KB \cup \{\varphi\}$ unsatisfiable iff $KB \vDash \neg \varphi$ \\
+\end{itemize}

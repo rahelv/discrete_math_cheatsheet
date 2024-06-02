@@ -1,0 +1,27 @@
+\section*{Proofs}
+A statement consists of preconditions and conclusions. \\
+\textbf{Disproof (Refutation)}: Example where preconditions are true, but conclusion is false (deriving negation of conclusion) \\
+\textbf{Direct Proof} \\
+\textbf{Indirect Proof (Contradiction)}: 1. Assumption that statement is false 2. Derive contradiction from Assumption together with precondition of the statement. This shows assumption must be false, given the preconditions of the statement --> original statement must be true. If A, then B --> If A, then not B.  \\
+\textbf{Contrapositive}: Prove If A, then B by proving If not B, then not A \\
+\textbf{Mathematical Induction}: Proof of proposition P(n) for all natural numbers n with $n \geq m$: 
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item \textit{basis}: proof of P(m) 
+    \item \textit{induction hypothesis (IH)}: suppose that P(k) is true for all k with $m \leq k \leq n$
+    \item \textit{inductive step}: proof of P(n+1) using the IH
+\end{itemize}
+\textbf{Weak induction}: IH only supposes P(k) is true for k = n. \textbf{Strong induction}: Supposes P(k) is true for all $k \in \mathbb{N}_0$ with $m \leq k \leq n$ \\
+\textbf{Structural Induction}: Proof of statement for all elements of an inductively defined set 
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item \textit{basis}: proof for basic elements 
+    \item \textit{induction hypothesis (IH)}: suppose that statement is true for some elements $M$
+    \item \textit{inductive step}: proof of the statement for elements constructed by applying a construction rule to $M$ (one IS for each construction rule) 
+\end{itemize} 
+\textbf{Inductive Definition}: A set M can be defined inductively by specifying: basic elements, construction rules. \\ \\
+\textbf{Binary Trees}
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item \textit{Binary Trees}: $\square$ is a binary tree (a \textit{leaf}), If L and R are binary trees, then $\langle L,\bigcirc, R \rangle$ is a binary tree (with \textit{inner node} $\bigcirc$)
+    \item \textit{Leaves of a Binary Tree}: leaves$(\square) = 1$, leaves$(\langle L,\bigcirc, R \rangle)$ = leaves(L) + leaves(R) 
+    \item \textit{Inner Nodes of a Binary Tree}: inner$(\square) = 0$, inner$(\langle L,\bigcirc, R \rangle)$ = inner(L) + inner(R) + 1  
+    \item For all binary trees B: inner(B) = leaves(B) -1 
+\end{itemize} 

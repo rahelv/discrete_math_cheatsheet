@@ -1,0 +1,81 @@
+\section*{Propositional Logic}
+\textbf{Formal Logic}: Describe what to accomplish, not how to accomplish it. \\
+\textbf{Propositional Logic}: logic wihout numbers or objects. 
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item \textbf{propositions}: statements that can be true or false. 
+    \item \textbf{atomic propositions}: cannot be split
+    \item \textbf{logical connectives}: and, or, negation, if...then
+\end{itemize}
+\textbf{Syntax}: Let A be a set of atomic propositions. The set of propositional formulas over A is defined as follows: \\
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item Every \textbf{atom a} $\in A$ is a prop. formula over A %over A gilt für alle 
+    \item If $\varphi$ is a p. formula, then so is its \textbf{negation} $\neg\varphi$. 
+    \item If $\varphi$ and $\psi$, then so is the \textbf{conjunction} ($\varphi \wedge \psi$) \textit{and}
+    \item If $\varphi$ and $\psi$, then so is the \textbf{disjunction} ($\varphi \vee \psi$) \textit{or}
+    \item \textbf{implication if...then} ($\varphi \rightarrow \psi$) abbv. for  ($\neg\varphi \vee \psi$) 
+    \item \textbf{biconditional iff} ($\varphi \leftrightarrow \psi$) = ($(\varphi \rightarrow \psi) \wedge (\psi \rightarrow \varphi)$)
+\end{itemize}
+\textbf{Semantics}: Formally define what a formula means. \\
+\textbf{truth assignment} (or \textbf{interpretation}) for a set of atomic propositions A is a function $I: A \rightarrow \{0,1\}$ (assigns a truth value to every a.p.)\\ 
+A p. formula $\varphi$ holds under $I$ ($I \vDash\varphi$) according to: 
+\vspace{-0.3cm}
+\begin{alignat*}{2}
+    &I \vDash a &&\text{ iff } I(a) = 1 \text{ (for $a\in A$) (true)} \\ 
+    &I \vDash \neg\varphi &&\text{ iff not } I \vDash \varphi \\ %kann man hier das \nvDash Symbol verwenden ? 
+    &I \vDash (\varphi \wedge \psi) &&\text{ iff } I \vDash \varphi \text{ and } I \vDash \psi \text{ (both true)} \\
+    &I \vDash (\varphi \vee \psi) &&\text{ iff } I \vDash \varphi \text{ or } I \vDash \psi \text{ (at least one true)}
+\end{alignat*} \vspace{-0.3cm} \\
+\textbf{Terminology}: 
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item $I \vDash \varphi$: $I$ is a model of $\varphi$, a is true under $I$
+    \item $I \nvDash \varphi$: $I$ is no model of $\varphi$
+    \item \textbf{Metalanguage}: $\vDash$ and $\nvDash$ 
+\end{itemize} 
+\textbf{Properties of Propositional Functions}: 
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item \textbf{satisfiable} if $\varphi$ has at least one model (possible) \\
+    ex: $A\wedge B$. $I = \{A \mapsto 1, B \mapsto 1\}$, proof that $I \vDash (A \wedge B)$ \\
+    $\rightarrow \text{result in at least one row is yes}$
+    \item \textbf{unsatisifable} if $\varphi$ not satisfiable \\
+     $\rightarrow \text{result in all rows is no}$
+    \item \textbf{valid/tautology} $\varphi$ true under every interpretation \\
+    ex: Consider all possible interpretations. \\
+     $\rightarrow \text{result in all rows is yes}$
+    \item \textbf{falsifiable} if $\varphi$ is no tautology (possible to be false) \\
+    ex: $A\wedge B$. $I = \{A \mapsto 0, B \mapsto 1\}$, proof that $I \nvDash (A \wedge B)$ \\
+     $\rightarrow \text{result in at least one row is no}$
+\end{itemize}
+\textbf{Truth Tables}: example for $\varphi = ((A\rightarrow B) \vee (\neg B \rightarrow A))$ 
+\vspace{-0.3cm}
+\begin{displaymath}
+\resizebox{5.5cm}{!}{
+\begin{tabular}{|p{5pt} p{9pt}|p{19pt} p{34pt} p{39pt} p{16pt}|}
+I(A) & I(B) & I \vDash \neg B & I \vDash (A \rightarrow B) & I \vDash (\neg B \rightarrow A) & I \vDash \varphi\\ 
+\hline % Put a horizontal line between the table header and the rest.
+0 & 0 & \text{Yes} & \text{Yes} & \text{No} & \text{Yes}\\
+0 & 1 & \text{No} & \text{Yes} & \text{Yes} & \text{Yes}\\
+1 & 0 & \text{Yes} & \text{No} & \text{Yes} & \text{Yes}\\
+1 & 1 & \text{No} & \text{Yes} & \text{Yes} & \text{Yes}\\
+\end{tabular}}
+\vspace*{-\baselineskip}
+\end{displaymath} 
+\vfill\null
+\columnbreak 
+\textbf{Logical Equivalences}: Two propositional formular $\varphi$ and $\psi$ are (logically) equivalent ($\varphi \equiv \psi$) if for all interpretations $I$ for A it is true that $I \vDash \varphi$ iff $I \vDash \psi$. 
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item \textbf{associativity} $((\varphi \vee \psi) \vee \chi) \equiv (\varphi \vee (\psi \vee \chi))$ (sf $\wedge$)
+    \item \textbf{idempotence} $(\varphi \vee \varphi) \equiv \varphi$ (same for $\wedge$)
+    \item \textbf{commutativity} $(\varphi \vee \psi) \equiv (\psi \vee \varphi)$ (same for $\wedge$)
+    \item \textbf{absorption}: $(\varphi \wedge (\varphi \vee \psi)) \equiv \varphi$ and $(\varphi \vee (\varphi \wedge \psi)) \equiv \varphi$
+    \item \textbf{distributivity}: $(\varphi \wedge (\psi \vee \chi)) \equiv ((\varphi \wedge \psi) \vee (\varphi \wedge \chi))$ \\ \makebox[48pt]{}$(\varphi \vee (\psi \wedge \chi)) \equiv ((\varphi \vee \psi) \wedge (\varphi \vee \chi))$ \\
+    \item \textbf{double negation}: $\neg \neg \varphi \equiv \varphi$
+    \item \textbf{De Morgan}: $\neg (\varphi \wedge \psi) \equiv (\neg\varphi \vee \neg\psi)$ and \\ 
+    \makebox[38pt]{} $\neg (\varphi \vee \psi) \equiv (\neg\varphi \wedge \neg\psi)$ 
+    \item \textbf{Tautology Rules}: $(\varphi \vee \psi) \equiv \varphi$ if $\varphi$ tautology \\
+    \makebox[54pt]{} $(\varphi \wedge \psi) \equiv \psi$ if $\varphi$ tautology
+    \item \textbf{Unsatisfiability}: $(\varphi \vee \psi) \equiv \psi$ if $\varphi$ unsatisfiable \\
+    \makebox[53pt]{} $(\varphi \wedge \psi) \equiv \varphi$ if $\varphi$ unsatisfiable
+\end{itemize}
+\fontsize{6pt}{5pt}\selectfont
+\textbf{Substitution Theorem}: Let $\varphi$ and $\varphi'$ be equivalent propositional formulas over A. Let $\psi$ be a propositional formula with (at least) one occurrence of the subformula $\varphi$. Then $\psi$ is equivalent to $\psi'$, where $\psi'$ is constructed from $\psi$ by replacing an occurence of $\varphi$ in $\psi$ with $\varphi'$ \\ %? 
+\fontsize{7pt}{5pt}\selectfont

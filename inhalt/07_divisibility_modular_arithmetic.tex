@@ -1,0 +1,25 @@
+\section*{Divisibility}
+Let $m, n \in \mathbb{Z}$. If there exists a $k \in \mathbb{Z}$ such that $mk = n$, we say that m divides n, m is a divisor of n or n is a multiple of m and write this as $m \mid n$ \\
+\textbf{Linear combinations}: Let a,b and d be integers. If $d \mid a$ and $d \mid b$ then for all integers x and y it holds that $d \mid xa + yb$. Some consequences: 
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item $d\mid a - b$ iff $d \mid b - a$ (x=-1, y=0) 
+    \item If $d \mid a$ and $d \mid b$ then $d \mid a + b$ and $d \mid a - b$ \\ (x=1, y=1) und (x=1, y=-1)
+    \item If $d \mid a$ then $d \mid -8a$ (x=-8, y=0)
+    \item \textbf{Multiplication and Exponentiation}: Let $a, b, c \in \mathbb{Z}$ and $n \in \mathbb{N}_{>0}$. If $a\mid b$ then $ac\mid bc$ and $a^n\mid b^n$.
+    \item Divisibility $\mid$ over $\mathbb{N}_0$ is a \textbf{partial order} \\
+\end{itemize}
+\section*{Modular Arithmetic} 
+\textbf{Euclid's Division Lemma}: For all integers a and b with $b \neq 0$ there are unique integers q and r with $a = qb + r$ and $0 \leq r < |b|$. Number a is called the \textbf{dividend}, b the \textbf{divisor}, q is the \textbf{quotient} and r the \textbf{remainder}. \\ 
+\textbf{\textit{Modulo Operation}}: a mod b refers to the remainder of Euclidian division.  
+\columnbreak \\
+\textbf{Congruence Modulo n}: For integer n > 1, two integers a and b are called \textbf{congruent modulo n} if $n \mid a - b$. Written: $a \equiv b (\pmod n)$. Considers integers equivalent if they have with divisor n the same remainder ($a = qn + r$ and $b = q'n + r)$. \\
+\textbf{\textit{Congruence Relation}}: Equivalence relation compatible with operations: \\ 
+if $a \equiv a' \pmod n$ and $b \equiv b' \pmod n$: 
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item addition: $a + a' \equiv b + b' \pmod{n}$
+    \item subtraction $a - a' \equiv b - b' \pmod{n}$
+    \item multiplication $aa' \equiv bb' \pmod{n}$
+    \item translation  $a + k \equiv b + k \pmod{n} \forall k \in \mathbb{Z}$
+    \item scaling $ak \equiv bk \pmod{n} \forall k \in \mathbb{Z}$
+    \item exponentiation $a^k \equiv b^k \pmod{n} \forall k \in \mathbb{N}_0$
+\end{itemize} 

@@ -1,0 +1,45 @@
+\section*{Further Topics in Graph Theory}
+\textbf{Subgraph}: of a \textbf{graph} (V,E) is a graph (V',E') with $V' \subseteq V$ and $E' \subseteq E$. analogously for \textbf{digraphs}. Defines a partial order on graphs. \\
+\textbf{Induced Subgraph}: Let G = (V, E) be a \textbf{graph}, and let $V' \subseteq V$. The subgraph of G induced by V' is the graph (V', E') with $E' = \{\{u, v\} \in E \mid u,v \in V'\}$. \\
+Let G = (N,A) be a \textbf{digraph}, and let $N' \subseteq N$. The subgraph of G induced by N' is the digraph (N',A') with $A' = \{(u,v) \in A \mid u,v \in N'\}$. \\
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item Induced Subgraphs are the largest subgraphs.
+    \item Subgraphs induced by the connected components of a forest are trees.
+    \item \textbf{Counting Subgraphs}: No. of Subgraphs not easy to answer. No. of Induced Subgraphs: $2^{|V|}$\\
+\end{itemize}
+\textbf{Isomorphism}: graphs G = (V,E) and G' = (V',E'). An \textbf{isomorphism} from G to G' is a bijective function $\sigma: V \rightarrow V'$ such that for all $u, v \in V: \{u,v\} \in E \text{ iff } \{\sigma(u), \sigma(v)\} \in E'$. Written: $G \cong G'$. 
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item Isomorphisms: Identity Function, Inverse, Composition (when defined over matching sets of vertices)    $\rightarrow$ Equivalence Relation 
+    \item \textbf{Proving}: Give an example of an isomorphism 
+    \item \textbf{Disproving}: Identify \textbf{\textit{graph invariant}} (property that must be the same): no. edges, no. vertices, max/min degree, number of connected component, ...  
+\end{itemize}
+\textbf{Symmetry / Automorphism}: Isomorphism between Graph and itself. \\
+\textbf{Group}: All symmetries of a graph. \\   
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item \textbf{Rotation}: $\sigma_1 =\{1 \mapsto 2, 2 \mapsto 3, 3 \mapsto 4, 4 \mapsto 5, 5 \mapsto 1\}$
+    \item \textbf{Reflection}: $\sigma_1 =\{1 \mapsto 5, 2 \mapsto 4, 3 \mapsto 3, 4 \mapsto 2, 5 \mapsto 1\}$
+\end{itemize} 
+\subsection*{Planarity and Minors}
+\begin{tikzpicture}[scale=.6, transform shape]
+\graph [simple,nodes={myblue}, edges={myblue!80, semithick}] {subgraph K_n [n=5, clockwise];};
+\end{tikzpicture}
+\hspace{2pt}
+\begin{tikzpicture}[scale=.6,transform shape]
+\graph [simple,nodes={myblue}, edges={myblue!80, semithick}] 
+{
+    {a,b,c} -- [complete bipartite] {1,2,3}
+};
+\end{tikzpicture} \\
+$K_5$ and $K_{3,3}$ are the smallest non-planar graphs. A graph is planar iff it does not contain $K_5$ or $K_{3,3}$. \\ \columnbreak \\ 
+\textbf{Planar Embedding}: Picture of a graph with no edge crossings. A graph is \textbf{planar} if such an embedding exists. All Edges straight lines. \\
+\textbf{Minor}: We say that a graph G' is a minor of a graph G if it can be obtained from G through a sequence of transformations of the following kind: 
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item remove a vertex (of degree 0)
+    \item remove an edge 
+    \item \textbf{Edge Contraction}: combine connected vertices u and v into a single vertex uv. neighbours of uv: neigh(u) $\cup$ neigh(v).\\
+\end{itemize} 
+\textbf{Wagner's Theorem}: A graph is planar iff it does not contain $K_5$ or $K_{3,3}$ as a minor. (forbidden minors) \\
+\textbf{Minor-Hereditary Properties}: If G is \textbf{planar}/\textbf{acyclic}, then all its minors are also planar.
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item \textbf{Graph Minor Theorem}: Let $\Pi$ be a minor-hereditary property of graphs. Then there exists a finite set of forbidden minors F($\Pi$) such that: A graph has property $\Pi$ iff it does not have any graph from F($\Pi$) as a minor. ex: forbidden minor for acyclicity is $K_3$. \\
+\end{itemize} 

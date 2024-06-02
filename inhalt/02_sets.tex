@@ -1,0 +1,56 @@
+\section*{Sets}
+A set is an unordered collection of distinct objects. \\
+\textbf{Notation}: \textit{explicit} \textcolor{blue}{$A = \{1, 2, 3\}$}, implicit with \textit{set-builder notation} \textcolor{blue}{$A = \{x \mid x \in \mathbb{N}_0 \text{ and } 1 \leq x \leq 3\}$}, \textit{interval notation}: [] = including, () = excluding
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item Natural numbers $\mathbb{N}_0 = \{0, 1, 2, ...\}$ 
+    \item Integers $\mathbb{Z} = \{..., -2, -1, 0, 1, 2, ...\}$     
+    \item Positive Integers $\mathbb{Z}_+ = \mathbb{N}_1 = \{1, 2, ...\}$ 
+    \item Rational numbers $\mathbb{Q} = \{n/d \mid n \in \mathbb{Z}, d \in \mathbb{N}_1\}$
+    \item Real numbers $\mathbb{R} = (-\infty, \infty)$  
+\end{itemize}
+\textbf{Set definitions}
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item $A \subseteq B$: A is a \underline{subset} of B. $\subset$ for \underline{strict subset}.
+    \item $A \supseteq B$: A is a \underline{superset} of B $\supset$ for \underline{strict superset}.
+\end{itemize} 
+\textbf{Power Set} $P(S)$ is the set of all subsets of S. $P(S) = \{ M \mid M \subseteq S\}$ $\emptyset$ and S always in the powerset \\
+\textbf{Set operations}: intersection, disjoint if $A \cap B = \emptyset$. complement, union, set difference \\ %and, or, a minus b, complement ergänzung: b\a where b is the set of all considered objects 
+\begin{tikzpicture}[scale=.25]
+    \begin{scope}
+        \clip \firstcircle;
+        \fill[filled] \secondcircle;
+    \end{scope}
+    \draw[outline] \firstcircle node {$A$};
+    \draw[outline] \secondcircle node {$B$};
+    \node[anchor=south] at (current bounding box.north) {$A \cap B$};
+\end{tikzpicture}
+%Set A or B but not (A and B) also known a A xor B
+\begin{tikzpicture}[scale=.25]
+    \draw[filled, even odd rule] \firstcircle node {$A$}
+                                 \secondcircle node{$B$};
+    \node[anchor=south] at (current bounding box.north) {$\overline{A \cap B}$};
+\end{tikzpicture}
+% Set A or B
+\begin{tikzpicture}[scale=.25]
+    \draw[filled] \firstcircle node {$A$}
+                  \secondcircle node {$B$};
+    \node[anchor=south] at (current bounding box.north) {$A \cup B$};
+\end{tikzpicture}
+% Set A but not B
+\begin{tikzpicture}[scale=.25]
+    \begin{scope}
+        \clip \firstcircle;
+        \draw[filled, even odd rule] \firstcircle node {$A$}
+                                     \secondcircle;
+    \end{scope}
+    \draw[outline] \firstcircle
+                   \secondcircle node {$B$};
+    \node[anchor=south] at (current bounding box.north) {$A\setminus B$};
+\end{tikzpicture}
+\textbf{Commutativity of $\cup$ and $\cap$}: $A \cup B = B \cup A$ and $A \cap B = B \cap A$ \\
+\textbf{Associativity of $\cup$ and $\cap$}: $(A \cup B) \cup C = A \cup (B \cup C)$ and $(A \cap B) \cap C = A \cap (B \cap C)$ \\
+\textbf{Distributivity}: $A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$ 
+and $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$  \\
+\textbf{De Morgan's Law}: $\overline{A \cup B} = \overline{A} \cap \overline{B}$ and $\overline{A \cap B} = \overline{A} \cup \overline{B}$ \\
+\textbf{Relative Complements}: $A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)$ and $A \setminus (B \cap C) = (A \setminus B) \cup (A \setminus C)$ \\ 
+

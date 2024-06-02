@@ -1,0 +1,90 @@
+\section*{Functions} 
+\textbf{Notation}: \textit{explicit}: $f(a) = 4, f(b) = 2$ or $f = \{a \mapsto 4, b \mapsto 2\}$, \textit{formula}: $f(x) = x^2 + 1$, \textit{recurrence}: $0! = 1$ and $n! = n(n-1) \text{ for } n > 0$ (in programming: recursion), in terms of other functions: \textit{inverse, composition} \\
+In principle, functions are just a\textbf{ special kind of relations}. $f: \mathbb{N}_0 \rightarrow \mathbb{N}_0$ with $f(x) = x^2$ or relation R over $\mathbb{N}_0$ with $R ? \{(x, x^2) \mid x \in \mathbb{N}_0\}$. (input, output). \\
+\textbf{Functional Relations}: A binary relation R over sets A and B is functional if for every $a \in A$ there is at most one $b \in B$  with $(a,b) \in R$. \vspace{20pt} \\ 
+\textbf{Partial Functions}: A partial function f from set A to set B (written $f: A \nrightarrow B$) is given by a functional relation G over A and B. Relation G is called the \textit{graph} of f. We write $f(x) = y$ for $(x,y) \in G$ and say y is the \textit{image} of x under f. If there is no $y \in B$ with $(x,y) \in G$ then $f(x)$ is undefined. \\
+Example $r: \mathbb{Z} \times \mathbb{Z} \nrightarrow \mathbb{Q}$ with\\
+$ r(n,d) =
+     \begin{cases}
+       \frac{n}{d} &\quad\text{ if } d \neq 0\\
+       \text{undefined} &\quad\text{otherwise} \\
+     \end{cases}$ 
+\\ has graph $\{((n,d), \frac{n}{d} \mid n \in \mathbb{Z}, d \in \mathbb{Z} \backslash \{0\}\} \subseteq \mathbb{Z}^2 \times \mathbb{Q}$ \\
+\textbf{Definitions}: Let  $f: A \nrightarrow B$ be a partial function. Set A is called the \textbf{domain} of f, set B is its \textbf{codomain}.  \\
+\textbf{domain of definition}: $dom(f) = \{x \in A \mid \text{ there is a } y \in B \text{ with } f(x) = y\}$ \\
+\textbf{image/range}: $img(f) = \{y \mid \text{ there is an } x \in A \text{ with } f(x) = y\}$ \\
+\begin{tikzpicture}
+[
+  group/.style={ellipse, draw=myblue, minimum height=45pt, minimum width=25pt, label=above:#1},
+  my dot/.style={circle, fill, minimum width=2.5pt, label=above:#1, inner sep=0pt}, 
+]
+\node (a) [my dot=$a$] {};
+\node (b) [below=8pt of a, my dot=$b$] {};
+\node (c) [below=8pt of b, my dot=$c$] {};
+\node (d) [below=8pt of c, my dot=$d$] {};
+\node (e) [below=8pt of d, my dot=$e$] {};
+
+\node (1) [right=35pt of a, my dot=$1$] {};
+\node (2) [right=35pt of b, my dot=$2$] {};
+\node (3) [right=35pt of c, my dot=$3$] {};
+\node (4) [below=8pt of 3, my dot=$4$] {};
+
+\foreach \i/\j in {a/4,b/2,c/1, e/4}
+  \draw [->, shorten >=1pt] (\i) -- (\j);
+\node [fit=(a) (b) (c) (d) (e), group=$domain$] {};
+\node [fit=(1) (2) (3) (4), group=$codomain$] {};
+
+\node [anchor=north west, align=left] at ([shift={(10pt,-10pt)}]current bounding box.north east) {
+    $f: \{a, b, c, d, e\} \nrightarrow \{1, 2, 3, 4\}$ \\
+    $\text{domain } \{a, b, c, d, e\} $ \\
+    $\text{codomain } \{1, 2, 3, 4\} $ \\
+    $dom(f) = \{a, b, c, e\}$ \\
+    $img(f) = \{1, 2, 4\}$ \\ 
+    preimage examples: \\ 
+    $f^{-1}\lbrack \{1\}\rbrack = \{c\}$ \\
+    $f^{-1}\lbrack \{4\}\rbrack = \{a,e\}$ \\
+    $f^{-1}\lbrack \{1,2\}\rbrack = \{c,b\}$
+};
+\end{tikzpicture} \\
+\textbf{Preimage}: The preimage contains all elements of the domain that are mapped to given elements of the codomain. $f^{-1}\lbrack Y\rbrack = \{x \in A \mid f(x) \in Y\}$ 
+\columnbreak \\
+\textbf{Total Functions}: $f: A \rightarrow B$ is a partial function from A to B such that $f(x)$ is defined for all $x\in A$. domain = domain of definition. \\
+\textbf{Restriction And Extension}: Let f: X $\nrightarrow$ Y be a partial function from set X to set Y and let $A \subseteq X$. The \textbf{restriction} of f to A is the partial function $f\mid_A: A \nrightarrow Y$ with $f\mid_A (x) = f(x)$ for all $x \in A$. explained: restricting the domain. 
+\textbf{extension}: Let $f: X \rightarrow Y$ be a function and A and B be sets such that $X \subseteq A$ and  $Y \subseteq B$. An extension of f to A is a function $g: A \nrightarrow B$ such that $f(x) = g(x)$ for all $x \in X$. explained: making the domain bigger. \\ 
+\textbf{Function Composition (Composition of partial functions)}: Let $f: A \nrightarrow B$ and $g: B \nrightarrow C$ be partial functions.\\ The \textbf{composition of f and g} is $g \circ f: A \nrightarrow C$ with \\
+$ (g \circ f)(x) = 
+     \begin{cases}
+       \text{g(f(x))} &\quad\text{if f is defined for x}\\
+       \text{} &\quad\text{and g is defined for f(x)} \\
+       \text{undefined} &\quad\text{otherwise} \\
+     \end{cases}$ \\  
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item Corresponds to relation composition of the graphs 
+    \item If f and g are functions, their composition is a function
+    \item not commutative ($g \circ f \neq f \circ g$)
+    \item associative $f \circ (g \circ f) = (f \circ g) \circ f$
+\end{itemize}
+\textbf{Injective Function}: (one-to-one) if for all $x,y \in A$ with $x \neq y$ it holds that $f(x) \neq f(y)$. maps distinct elements of its domain to distinct elements of its co-domain. 
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item \textbf{Composition}: If $f: A \rightarrow B$ and $g: B \rightarrow C$ are injective functions then also $g \circ f$ is injective.
+\end{itemize}
+\textbf{Surjective Function}: image equal to its codomain. for all $y \in B$ there is an $x \in A$ with $f(x) = y$. maps at least one element to every element of its co-domain. 
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item \textbf{Composition}: If $f: A \rightarrow B$ and $g: B \rightarrow C$ are surjective functions then also $g \circ f$ is surjective. 
+\end{itemize}
+\textbf{Bijective Function}: (one-to-one correspondence) injective and surjective. every element of domain $\rightarrow$ one element of co-domain and vice-versa. 
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item \textbf{Composition}: The composition of two bijective functions is bijective.
+\end{itemize} 
+\textbf{Inverse Functions}: Let $f: A \rightarrow B$ be a bijection. The inverse function of f is the function $f^{-1}: B \rightarrow A$ with $f^{-1}(y) = x \text{ iff } f(x) = y$.
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item For all $x \in A$ it holds that $f^{-1}(f(x)) = x$ 
+    \item For all $y \in B$ it holds that $f(f^{-1}(y)) = y$
+    \item $f^{-1}$ is a bijection from B to A
+    \item $(f^{-1})^{-1} = f$
+    \item Let $f: A \rightarrow B$ and $g: B \rightarrow C$ be bijections. Then $(g \circ f)^{-1} = f^{-1} \circ g^{-1}$
+\end{itemize} 
+\textbf{Permutations}: Bijection from a set to itself. Used to describe rearrangement of objects. ex: \\
+$\sigma: \{1, 2, 3\} \rightarrow \{1, 2, 3\}$ with $\sigma(1) = 3, \sigma(2) = 1, \sigma(3) = 2$ \\
+\textbf{Permutations and Composition}: \\ 
+%Permutation Beziehung zu Composition 

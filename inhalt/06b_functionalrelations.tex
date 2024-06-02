@@ -1,0 +1,44 @@
+
+\begin{tikzpicture}
+[
+  group/.style={ellipse, draw=myblue, minimum height=45pt, minimum width=25pt, label=above:#1},
+  my dot/.style={circle, fill, minimum width=2.5pt, label=above:#1, inner sep=0pt}, 
+  every node/.style={scale=0.7}
+]
+\node (a) [my dot=$a$] {};
+\node (b) [below=7pt of a, my dot=$b$] {};
+\node (c) [below=7pt of b, my dot=$c$] {};
+
+\node (d) [right=30pt of a, my dot=$d$] {};
+\node (e) [right=30pt of b, my dot=$e$] {};
+\node (f) [right=30pt of c, my dot=$f$] {};
+\node (g) [below=7pt of f, my dot=$g$] {};
+
+\foreach \i/\j in {a/e,b/d,c/g}
+  \draw [->, shorten >=1pt] (\i) -- (\j);
+\node [fit=(a) (b) (c), group] {};
+\node [fit=(d) (e) (f) (g), group] {};
+\node [below] at (current bounding box.south) {functional};
+\end{tikzpicture}
+\hspace{1pt}
+\begin{tikzpicture}
+[
+  group/.style={ellipse, draw=myblue, minimum height=45pt, minimum width=25pt, label=above:#1},
+  my dot/.style={circle, fill, minimum width=2.5pt, label=above:#1, inner sep=0pt}, 
+  every node/.style={scale=0.7}
+]
+\node (a) [my dot=$a$] {};
+\node (b) [below=7pt of a, my dot=$b$] {};
+\node (c) [below=7pt of b, my dot=$c$] {};
+
+\node (d) [right=30pt of a, my dot=$d$] {};
+\node (e) [right=30pt of b, my dot=$e$] {};
+\node (f) [right=30pt of c, my dot=$f$] {};
+\node (g) [below=7pt of f, my dot=$g$] {};
+
+\foreach \i/\j in {a/e,b/d,c/g, b/f}
+  \draw [->, shorten >=1pt] (\i) -- (\j);
+\node [fit=(a) (b) (c), group] {};
+\node [fit=(d) (e) (f) (g), group] {};
+\node [below] at (current bounding box.south) {not functional};
+\end{tikzpicture} \\

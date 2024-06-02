@@ -1,0 +1,20 @@
+\section*{Acyclicity}
+\textbf{Forest}: Acyclic Graph. \textbf{DAG}: Directed Acyclic Graph \\
+\textbf{Tree}: connected forest. acyclic, connected. \\
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item there exists exactly one \textbf{unique path} from any vertex $u \in V$ to any vertex $v \in V$.
+    \item A \textbf{leaf} of G is a vertex $v \in V$ with $deg(v) = 1$.
+    \item tree with number of vertices $|V| \geq 2$ has at least 2 leaves. 
+    \item number of edges: tree with $V \neq \emptyset$ has $|E| = |V| - 1$ \\
+    \textbf{in forests}: C= connected components. $|E|=|V|-|C|$ 
+\end{itemize}
+\textbf{Rooted Tree}: Recursive Data Structure. \\ 
+\fontsize{5pt}{5pt}\selectfont
+\textbf{From Rooted Tree to Tree Graphs: } 
+\begin{enumerate}[noitemsep,topsep=0pt,leftmargin=*]
+    \item Select any vertex v. Make v the root of the tree.
+    \item Initial state: v \textit{pending} (v added to tree but children not), no \textit{processed} 
+    \item Repeat: Select any pending vertex u, make all neighbours v of u that are not yet processed children of u and mark them as pending, change u from pending to processed.
+\end{enumerate}
+\fontsize{7pt}{5pt}\selectfont
+%Characterizations of Trees Beweise anschauen 

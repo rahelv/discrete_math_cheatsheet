@@ -1,0 +1,43 @@
+\section*{Graphs}
+\textbf{Graph}: pair $G = (V, E)$, where V is the finite set of \textbf{\textit{vertices}} and $E \subseteq \{\{u, v\} \subseteq V \mid u \neq v\}$ is the set of \textbf{\textit{edges}}. Edges are sets of 2 elements. \\ irreflexive symmetric relation $R_E$ over V: $u R_E v$ iff ${u,v} \in E$\\ 
+\textbf{Digraph}: pair $G = (N, A)$, where N is the finite set of \textbf{\textit{nodes}} and $A \subseteq N \times N$ is the set of \textbf{\textit{arcs}}. Arcs are pairs (tuples). \\ arbitrary relation $R_A$ over N: $u R_A v$ iff $(u,v) \in A$\\
+\textbf{Graph Terminology}
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item  u and v are \textbf{endpoints} of / \textbf{incident} to the edge $\{u,v\} \in E$
+    \item u and v are \textbf{adjacent} if $\{u,v\} \in E$
+    \item \textbf{neighbours}: adjacent vertices $neigh(v) = \{w \in V \mid \{v, w\} \in E\}$ 
+    \item \textbf{degree}: number of neighbours. $deg(v) = |neigh(v)|$
+\end{itemize}
+\textbf{Directed Graph Terminology}
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item  u is the \textbf{\textit{tail}} and v is the \textbf{\textit{head}} of the arc $(u,v) \in A$
+    \item u and v are incident to the arc $(u,v) \in A$
+    \item u is a \textbf{\textit{predecessor}} of v and v is a \textbf{\textit{successor}} of u if $(u, v) \in A$. predecessors and successors are written as $pred(v) = \{u \in N \mid (u,v) \in A \}$ and $succ(v) = \{w \in N \mid (v, w) \in A \}$ 
+    \item \textbf{\textit{indegree / outdegree}}: $indeg(v) = |pred(v)|$ and $outdeg(v) = |succ(v)|$ \\
+\end{itemize}
+\textbf{Induced Graph of a Directed Graph}: undirected graph induced by a directed graph. $E = \{\{u,v\} \mid (u,v) \in A, u \neq v\}$. Because of self-loops and 2 arcs can become 1 edge $|E| \leq |A|$ \\
+\textbf{Degree Lemma}: Let (N, A) be a \textit{directed graph}. Then $\sum_{v \in N} indeg(v) = \sum_{v \in N} outdeg(v) = |A|$. Let (V, E) be a g\textit{}raph. Then $\sum_{v \in V} deg(v) = 2|E|$. \textcolor{blue}{Every graph has an even number of vertices with odd degree.} 
+\subsection*{Paths and Connectivity}
+\textbf{Walk}: A walk of length n in a \textbf{graph} (V,E) is a tuple $\langle v_0, v_1, ..., v_n\rangle \in V^{n+1}$ so that $\{v_i, v_{i+1}\} \in E \forall 0 \leq i \leq n$.  \\
+ A walk of length n in a \textbf{digraph} (N, A) is a tuple $\langle v_0, v_1, ..., v_n\rangle \in N^{n+1}$ so that $(v_i, v_{i+1}) \in A \forall 0 \leq i \leq n$. vertices may repeat, length of walk = tuple - 1\\ 
+ \begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item \textbf{empty walk}: length 0 (empty tour = empty path) 
+    \item \textbf{Path}: nodes don't repeat. A walk with $v_i \neq v_j \forall 0 \leq i < j \leq n$.  
+    \item \textbf{Tour}: walk with $v_0 = v_n$ (start = end)
+    \item \textbf{Cycle}: tour with $n \geq 1$ (\textbf{digraphs}) or $n \geq 3$ (\textbf{graphs}) and $v_i \neq v_j \forall 1 \leq i < j \leq n$. (cycle can't be empty, self-loop is a cycle (4,4))
+\end{itemize}
+\subsection*{Reachability} 
+\textbf{successor relation $S_G$}: $(u,v) \in S_G \text{ iff } \{u,v\}$ is an edge / (u,v) is an arc of G. All pairs where I can go from one node to the second.\\
+\textbf{reachability relation $R_G$}: $(u,v) \in R_G$ iff there exists a walk from u to v. $R^*$ of the successor relation. \\
+\textbf{Reachability as Closure}: \textit{$\rightarrow$ n-fold composition} \\ Let G be a graph or digraph. $(u,v) \in S_G^n$ iff there exists a walk of length n from u to v. (composition with itself n-times) \\
+$R_G = \bigcup_{n = 0}^{\infty} S_G^n$ (union of all walks). \\
+\subsection*{Connected Components} 
+Reachability is an \textbf{equivalence relation} in Graphs, but not always in Digraphs (bc. of symmetry). \\ 
+\textbf{Connected Components}: the equivalence classes of the reachability relation of a \textit{Graph}. connected if at most 1 c.component, exception: ($\emptyset, \emptyset$) \\\\\\
+\textbf{Weakly Connected Components}: the equivalence classes of the reachability relation of the \textit{induced graph} of a \textit{Digraph}. weakly connected if at most 1 w.c. component, exception: ($\emptyset, \emptyset$) \\ \\ \\
+\textbf{Mutual Reachability Relation $M_G$}: v reachable from u and u reachable from v.  
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item In Graphs $M_G = R_G$ (symmetric).
+    \item In Digraphs $M_G$ is an equivalence relation.
+\end{itemize}
+\textbf{Strongly Connected Components}: eq. classes of $M_G$. at most 1 strongly C.Component, except: ($\emptyset, \emptyset$). \\

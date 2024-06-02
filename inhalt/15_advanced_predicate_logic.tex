@@ -1,0 +1,32 @@
+\subsection*{Free and Bound Variables}
+\textbf{Bound Variables}: Occurrences of Variables that are bound by a surrounding quantifier. \\
+\textbf{Variables of a Term}: Let t be a term. The set of variables that occur in t (\textbf{var(t)})
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item var(x) = $\{x\}$ for variable symbols x 
+    \item var(c) = $\emptyset$ for constant symbols c
+    \item function terms: var($f(t_1,...,t_k)$)=var($t_1$)$\cup...\cup$ var($t_k$) %collect variables that occur in the formula 
+\end{itemize} 
+\textbf{Ground Term}: Term t with var(t) = $\emptyset$ \\
+ex: var(product($x$, sum(k, $y$))) = var($x$) $\cup$ var(sum(k,$y$)) = \\ \{$x$\} $\cup$ var(k) $\cup$ var($y$) = \{$x$\} $\cup$ $\emptyset$ $\cup$ \{$y$\} = $\{x,y\}$\\ 
+\textbf{Free Variables}: (value of the variable assignment matters) The set of free variables of predicate logic formula $\varphi$ \textbf{free($\varphi$)}: 
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item free(P($t_1,...,t_k$)) = var($t_1) \cup...\cup $ var($t_k$)
+    \item free(($t_1 = t_2$)) = var($t_1) \cup$ var($t_1$)
+    \item free($\neg \varphi$) = free($\varphi$)
+    \item free(($\varphi \wedge \psi$)) = free(($\varphi \vee \psi$)) = free($\varphi$) $\cup$ free($\psi$)
+    \item free($\forall x \varphi$) = free($\exists x \varphi$) = free($\varphi) \backslash \{x\}$  
+\end{itemize} 
+Let $\varphi$ be a formula and $\alpha$ and $\beta$ variable assignments with $\alpha(x) = \beta(x) \forall $ free variables x of $\varphi$. Then $I, \alpha \vDash \varphi$ iff $I, \beta \vDash \varphi$. \\
+\textbf{Closed Formulas/Sentences}: Formula $\varphi$ without free variables (free($\varphi$) = $\emptyset$). \textbf{If $\varphi$ is a sentence, we can write $I \vDash \varphi$ }instead of $I, \alpha \vDash \varphi$ (variable assignment $\alpha$ irrelevant) \\ %open formulas = formulas with at least 1 free variable \vDash heisst is a model of hier... 
+\textbf{Ground Formula}: Closed fromula without quantifiers. \\ \\
+\textbf{Terminology for Formulas}:$\rightarrow$ prop. logic \\
+\textbf{Satisfied/True Sets of Formulas}: Let $S$ be a signature, $\Phi$ a set of formulas over $S$, $I$ an interpretation for S and $\alpha$ a variable assignment for $S$ and the universe of $I$. $I,\alpha$ satisfy formulas / \\ $\Phi$ is true under $I$ and $\alpha$ ($I, \alpha \vDash \Phi$) if $I, \alpha \vDash \varphi \forall \varphi \in \Phi$.   \\
+\textbf{Logical Equivalence and Consequence}: $\rightarrow$ prop. logic 
+$(\forall x\varphi\wedge \forall x\psi) \equiv \forall x(\varphi\wedge \psi) \\ 
+(\forall x\varphi\vee \forall x\psi) \vDash \forall x(\varphi\vee \psi) \text{ but not the converse }\\
+\exists x(\varphi\vee\psi) \equiv (\exists x\varphi \vee \exists x\psi)  \\ 
+\exists x(\varphi\wedge\psi) \vDash (\exists x\varphi \wedge \exists x\psi) \text{ but not the converse }\\
+(\forall x\varphi\wedge\psi) \equiv \forall x(\varphi\wedge \psi)$ and $(\exists x\varphi\wedge\psi) \equiv \exists x(\varphi\wedge \psi) \text{ if } x \notin \text{free} (\psi)\\ 
+(\forall x\varphi\vee\psi) \equiv \forall x(\varphi\vee \psi)$ and $(\exists x\varphi\vee\psi) \equiv \exists x(\varphi\vee \psi)\text{ if } x \notin \text{free} (\psi)\\ 
+\neg\forall x\varphi \equiv \exists x\neg\varphi&& \text{ and } \neg\exists x\varphi \equiv \forall x\neg\varphi \\
+$

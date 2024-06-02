@@ -1,0 +1,48 @@
+\section*{Relations}
+Let $S_1, ..., S_n$ be sets. A relation over $S_1, ..., S_n$ is a set $R \subseteq S_1 \times ... \times S_n$. The arity of R is n (set of n-tuples). \\
+\textbf{Binary Relation}: Relation over two sets A and B. \\
+$\leq = \{(x, y) \mid x,y \in \mathbb{N}_0 \text{ and } x < y \text{ or } x = y\}$. We write $(x, y) \in \leq$ or $x \leq y$. \\
+\textbf{Homogeneous Relation}: relation over set S $R \subseteq S \times S$ \\
+\textbf{Relation Properties}
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item \textbf{Reflexivity}: for all $a \in A$ it holds that $(a,a) \in R$
+    \item \textbf{Irreflexivity}: for all $a \in A$ it holds that $(a,a) \notin R$ \\ 
+    both at the same time only for $\emptyset$. but can be neither. 
+    \item \textbf{Symmetry}: for all $a, b \in A$ it holds that $(a,b) \in R$ iff $(b,a) \in R$.
+    \item \textbf{Asymmetry}: for all $a, b \in A$ it holds that $(a,b) \in R$ then $(b,a) \notin R$.
+    \item \textbf{Antisymmetry}: for all $a, b \in A$ with $a \neq b$ it holds that $(a,b) \in R$ then $(b,a) \notin R$.
+    \item \textbf{Transitivity}: for all $a, b, c \in A$ it holds that $(a,b) \in R$ and $(b,c) \in R$ then $(a,c) \in R$.
+\end{itemize}
+\textbf{Types of Relations}
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item \textbf{Equivalence Relation $\sim$}: reflexive, symmetric, transitive \\
+    \textbf{Equivalence Classes}: For any $x \in S$, the equivalence class of x is the set $\lbrack x\rbrack_{\sim} = \{y \in S \mid x \sim y\}$. \\
+    Set of all equivalence classes $E = \{\lbrack x\rbrack_{\sim} \mid x \in S\}$. Every element of S is in some equivalence class in E. Every element of S is in at most one equivalence class in E. 
+    \item \textbf{Partial Order $\preceq$ }: reflexive, antisymmetric, transitive.  \\ 
+    \textbf{poset}: partially ordered set (S, R) where S is a set and R is a partial order over S. \\
+    \textbf{least element}: for all $y \in S$ it holds that x $\preceq$ y. \\ %unique \\ 
+    \textbf{greatest element}: for all $y \in S$ it holds that y $\preceq$ x. %unique \\ 
+    \textbf{minimal elements}: $\nexists$ $y \in S$ with $y \preceq x$ and $x \neq y$. \\ 
+    \textbf{maximal elements}: $\nexists$ $y \in S$ with $x \preceq y $ and $x \neq y$. \\ 
+    \item \textbf{Total Order}: Relation that is total and a partial order \\ 
+    \textbf{Total Relation}: for all $x, y \in S$ at least one of $xRy$ or $yRx$ is true.
+    \item \textbf{Strict Order $\prec$ }: irreflexive, asymmetric, transitive    
+    \item \textbf{Strict Total Order}: trichotomous and a strict order (ex: < over $\mathbb{N}_O$), completely ranks the elements. \\ 
+    \textbf{Trichotomy}: for all $x, y \in S$ exactly one of $xRy$, $yRx$ or $x = y$ is true. \\
+    \textbf{special elements}: like partial order, but y where $y \neq x$
+\end{itemize}
+\textbf{Operations on Relations}\\
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item union, intersection
+    \item \textbf{Complementary Relation}: $\overline{R} = (S_1 \times ... \times S_n) \backslash R$ 
+    \item Relation $R \subseteq A \times B$ \\
+    \textbf{Inverse Relation}: $R^{-1} \subseteq B x A$ given by $R^{-1} = \{(b, a) \mid (a,b) \in R\}$. 
+    \item Relations $R_1 \subseteq A \times B$ and $R_2 \subseteq B \times C$. \\ \textbf{Composition} $R_2 \circ R_1 = \{(a,c) \mid \text{ there is a } b \in B \text{ with } (a,b) \in R_1 \text{ and } (b,c) \in R_2 \}$. 
+    Composition of Relations is \textbf{\textit{not commutative}}, but\textbf{ \textit{associative}}: Let $S_1, ..., S_4$ be sets and $R_1, R_2, R_3$ relations with $R_i \subseteq S_i \times S_{i+1}$. Then $R_3 \circ (R_2 \circ R_3) = (R_3 \circ R_2) \circ R_3$. 
+    \item \textbf{transitive closure $R^+$} of R is the smallest relation over S that is transitive and has R as a subset. 
+    \item \textbf{reflexive transitive closure $R^*$} of R ist the smallest relation over S that is reflexive, transitive and has R as a subset. \textcolor{blue}{the (r) t. closure always exists. WHY?}
+    \item \textbf{n-fold Composition}: $R^1 = R$\\
+    $R^0 = \{(x, x) \mid x \in S \}$ \textbf{(\textit{Identity Relation}) \\}
+    $R^i = R \circ R^{i-1} \forall i > 1$ OR $R^{n+1} = R \circ R^{n}$ \\ 
+    Let R be a relation over set S. Then $R^+ = \bigcup_{i=1}^{\infty}R^i$ and $R^* = \bigcup_{i=0}^{\infty}R^i$ 
+\end{itemize} 

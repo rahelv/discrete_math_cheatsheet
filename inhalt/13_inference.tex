@@ -1,0 +1,31 @@
+\section*{Inference}
+Syntactic Inference Rules give us a mechanical method to produce formulas that are logical consequences of given formulas. \\
+\textbf{Inference Rule}: \\
+Every model of $\varphi_1,...,\varphi_k$ is a model of $\psi$ 
+\infer{\varphi_1, ..., \varphi_k}{\psi} \\
+$\varphi_1,...,\varphi_k$ logically implies $\psi$ \\
+\textbf{Axiom}: Inference Rule with k = 0. \\
+\textbf{Calculus / Proof System}: Set of Inference Rules. \\
+\textbf{Inference Rules for Propositional Logic}: 
+\vspace{-0.3cm}
+{\fontsize{6pt}{5pt}\selectfont
+    \begin{align*}
+        &\text{Modus ponens} & \infer{\varphi, (\varphi \rightarrow \psi)}{\psi}\\ 
+        &\text{Modus tollens} & \infer{\neg\psi, (\varphi \rightarrow \psi)}{\neg\varphi}\\ 
+        &\wedge\text{-elimination} & \infer{(\varphi \wedge \psi)}{\varphi} \makebox[5pt]{} \infer{(\varphi \wedge \psi)}{\psi} \\ 
+        &\wedge\text{-introduction} & \infer{\varphi, \psi}{(\varphi\wedge\psi)} \\ 
+        &\vee\text{-introduction} & \infer{\varphi}{(\varphi\vee\psi)} \\ 
+        &\leftrightarrow\text{-elimination} & \infer{\varphi \leftrightarrow \psi}{(\varphi\rightarrow\psi)} \makebox[5pt]{} \infer{\varphi \leftrightarrow \psi}{(\psi\rightarrow\varphi)}
+    \end{align*} \vspace{-0.3cm} \\
+}
+\fontsize{6pt}{5pt}\selectfont
+\textbf{Derivation}: A derivation or proof of a formula $\varphi$ from a KB is a sequence of formulas $\psi_1,...,\psi_k$ with 
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item $\psi_k = \varphi$
+    \item for all $i \in \{1,...,k\}$: $\psi_i \in KB$ or \\
+    $\psi_i$ is the result of the application of an inference rule to elements from $\{\psi_1,...,\psi_{i-1}\}$  
+\end{itemize} 
+Ex: Find derivation of $(S\wedge R)$ from KB. Start with KB and apply inference rules until you get $(S\wedge R)$ \\
+\textbf{Correctness and Completeness}: $KB \vdash _{c} \varphi$ means we can derive $\varphi$ from a calculus C. \\
+A calculus C is \textbf{correct} if \\ \makebox[1.2cm]{} for all KB and $\varphi$ $KB \vdash _{c} \varphi$ implies $KB \vDash \varphi$ \\
+A calculus C is \textbf{complete} if \\ \makebox[1.2cm]{} for all KB and $\varphi$ $KB \vDash \varphi$ implies $KB \vdash _{C} \varphi$ \\

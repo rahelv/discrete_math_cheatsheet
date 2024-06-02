@@ -1,0 +1,73 @@
+\section*{Predicate Logic}
+\textbf{\underline{Signatures}} define allowed symbols (analogous to atoms in propositional logic) 
+4-tuple $S = \langle V, C, F, P \rangle$ \\
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item finite or countable Set $V$ of \textbf{variable symbols}: %(italics)
+    \item '' Set $C$ of \textbf{constant symbols}
+    \item '' Set $F$ of \textbf{function symbols} + arity $\forall f \in F$ 
+    \item '' Set $P$ of \textbf{predicate symbols} + arity $\forall P \in P$ %(Uppercase)
+\end{itemize}
+\textbf{Arity}: ar(f), ar($P$) = numbers of arguments. Described \textit{\textbf{k-ary}} symbol = symbol s with arity k. \\ 
+\textbf{\underline{Terms}}: associated with objects by semantics (no analogy) \\
+A \textbf{term} (over $S$) is inductively constructed according to the following rules: 
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item every variable symbol $v \in V$ is a term 
+    \item every constant symbol $c \in C$ is a term 
+    \item If $t_1,..., t_k$ are terms and $f\in F$ is a function symbol with arity k, then $f(t_1,..., t_k)$ is a term.
+\end{itemize}
+\textbf{\underline{Formulas}}: associated with truth values (true, false) by semantics. (analogous to formulas in pl). \\
+Inductive Definition: 
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item If $t_1,..., t_k$ are terms (over $S$) and P $
+    \in P$ is a k-ary predicate symbol, then the \textbf{atomic formula (atom)} $P(t_1,..., t_k)$ is a formula over $S$.
+    \item If $t_1$ and $t_2$ are terms (over $S$), then the \textbf{identity} $(t_1 = t_2)$ is a formula over $S$.
+    \item If $x\in V$ is a variable symbol and $\varphi$ a formula o.$S$, then the \textbf{universal quantification} $\forall x \varphi$ and the \textbf{existential quantification} $\exists x \varphi$ are formulas o. $S$.
+    \item If $\varphi$ is a formula over S, then so is its \textbf{negation} $\neg \varphi$ 
+    \item If $\varphi$ and $\psi$ are formuals over $S$, then so are the \textbf{conjunction} ($\varphi \wedge \psi$) and the \textbf{disjunction} ($\varphi \vee \psi$)\\
+\end{itemize}
+\textbf{Abbreviations}: Sequences of quantifiers: $\forall x \forall y \forall z \varphi \rightarrow \forall xyz \varphi$ \\
+Parentheses like propositional logic but $\forall$ and $\exists$ stronger
+\subsection*{Semantics}
+\textbf{Interpretation}: Pair $I = \langle U, \cdot^I\rangle$ 
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item \textbf{Universe U}: non-empty set 
+    \item \textbf{Function} $\cdot^I$ assigns meaning to \\
+    $c^I \in U$ for constant symbols $c \in C$ \\
+    k-ary function symbols $f\in F$: $f^I : U^k \rightarrow U$ \\
+    k-ary predicate symbols P $\in P$: $P^I \subseteq U^k$
+    \item A\textbf{ variable assignment} (for $S$ and Universe $U$)  is a function $\alpha: V \rightarrow U$ (assigns meaning to variables)
+\end{itemize}
+Example $(\forall x(\text{Block}(x) \rightarrow \text{Red}(x)) \wedge \text{Block}(a))$ \\
+"For all objects x: if x is a block, then x is red. Also, the object called a is a block." \\
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item \textbf{Terms} are interpreted as objects.
+    \item \textbf{Unary predicates} denote properties of objects
+    \item \textbf{General predicates} denote relations between objects
+    \item \textbf{Universally quantified} formulas ($\forall$) are true if they hold for every object in the universe. 
+    \item \textbf{Existentially quantified} formulas ($\exists$) are true if they hold for at least one object in the universe.
+\end{itemize}
+\textbf{Interpretation of Terms}: The interpretation of Term t under Interpretation $I$ and variable assignment $\alpha$ ($t^{I, \alpha}$, is the element of the universe $U$, defined as follows: 
+\begin{itemize}[noitemsep,topsep=0pt,leftmargin=*]
+    \item variable term t = x with $x \in V$: $x^{I, \alpha} = \alpha(x)$
+    \item constant term t = x with $c \in C$: $c^{I, \alpha} = c^I$
+    \item function term t = $f(t_1,...,t_k)$: \\
+    \makebox[1cm]{} $f(t_1,...,t_k)^{I, \alpha} = f^I(t_{1}^{I, \alpha},...,t_{k}^{I, \alpha})$
+\end{itemize}
+\textbf{Formula is Satisfied or True}: $I$ and $\alpha$ satisfy a predicate logic formula $\varphi$ ($\varphi$ is true under $I$ and $\alpha$): $I, \alpha \vDash \varphi$, according to these inductive rules: 
+\vspace{-0.3cm}
+\begin{alignat*}{2}
+    &I,\alpha \vDash P(t_1,...,t_k) &&\text{ iff } \langle t_{1}^{I,\alpha},...,t_{k}^{I,\alpha}\rangle \in P^I\\ 
+    &I,\alpha \vDash (t_1,...,t_k) &&\text{ iff } t_{1}^{I,\alpha} = t_{2}^{I,\alpha}\\ 
+    &I,\alpha \vDash \neg\varphi &&\text{ iff } I,\alpha \nvDash \varphi\\
+    &I,\alpha \vDash (\varphi \wedge \psi) &&\text{ iff } I,\alpha \vDash \varphi \text{ and } I,\alpha \vDash \psi\\ 
+    &I,\alpha \vDash (\varphi \vee \psi) &&\text{ iff } I,\alpha \vDash \varphi \text{ or } I,\alpha \vDash \psi\\ 
+    &I,\alpha \vDash \forall x\varphi &&\text{ iff } I,\alpha\lbrack x:=u\rbrack \vDash \varphi \text{ for all } u \in U\\ 
+    &I,\alpha \vDash \exists x\varphi &&\text{ iff } I,\alpha\lbrack x:=u\rbrack \vDash \varphi \text{ at least one } u \in U
+\end{alignat*} \vspace{-0.4cm} \\
+where $ \alpha\lbrack x:=u\rbrack(z) = 
+     \begin{cases}
+       u &\quad\text{ if } z = x\\
+       \alpha(z) &\quad\text{ if } z \neq x \\
+     \end{cases}$ 
+%means variable assignment $\alpha$ except x mapped to u. 
+\\
